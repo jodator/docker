@@ -1,4 +1,4 @@
-FROM jodator/php-fpm-phalcon
+FROM jodator/phalcon
 MAINTAINER Maciej Gołaszewski <jodator@gmail.com>
 
 RUN rm -f /etc/nginx/sites-enabled/*
