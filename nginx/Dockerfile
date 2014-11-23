@@ -13,6 +13,7 @@ RUN \
     chown -R www-data:www-data /var/lib/nginx
 
 RUN rm -rf /etc/nginx/*.d
+RUN rm -rf /etc/nginx/sites-enabled/*
 RUN mkdir -p /etc/nginx/addon.d /etc/nginx/conf.d /etc/nginx/host.d /etc/nginx/nginx.d
 
 ADD etc /etc
