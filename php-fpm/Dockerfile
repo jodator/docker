@@ -1,4 +1,4 @@
-FROM jodator/php-fpm
+FROM jodator/nginx
 MAINTAINER Maciej Gołaszewski <jodator@gmail.com>
 
 RUN \
