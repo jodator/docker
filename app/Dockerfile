@@ -7,6 +7,5 @@ ADD config/nginx/app.nginx /etc/nginx/sites-enabled/default
 
 ADD src/ /app/src
 ADD public/ /app/public
-# ADD config /app/config
 
 VOLUME [ "/app/data" ]
