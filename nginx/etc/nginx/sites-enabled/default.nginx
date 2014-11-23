@@ -1,0 +1,7 @@
+server {
+    listen [::]:80 default_server ipv6only=off;
+    root /app/public;
+    # include /etc/nginx/addon.d/default-*.conf;
+    # include /etc/nginx/conf.d/*.conf;
+    include /app/config/nginx/*;
+}

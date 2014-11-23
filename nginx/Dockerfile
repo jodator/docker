@@ -1,4 +1,5 @@
 FROM jodator/debian-dotdeb
+MAINTAINER Maciej Gołaszewski <jodator@gmail.com>
 
 # Install nginx.
 
@@ -11,14 +12,13 @@ RUN \
     rm -rf /var/lib/apt/lists/* && \
     chown -R www-data:www-data /var/lib/nginx
 
-VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/"]
+RUN rm -rf /etc/nginx/*.d
+RUN mkdir -p /etc/nginx/addon.d /etc/nginx/conf.d /etc/nginx/host.d /etc/nginx/nginx.d
 
-# Define working directory.
-WORKDIR /etc/nginx
-
-# Define default command.
-CMD ["nginx"]
+ADD etc /etc
+ADD supervisord.conf /etc/supervisor/conf.d/nginx.conf
 
 # Expose ports.
 EXPOSE 80
 EXPOSE 443
+

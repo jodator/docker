@@ -1,0 +1,70 @@
+server {
+    listen 80 default_server;
+
+    # App paths
+    set  $root_path     '/app/public';
+    set  $statics_path  '/app/public';
+    root $root_path;
+
+    index index.php index.html index.htm;
+
+    # App settings
+    charset                 utf-8;
+    client_max_body_size    20M;
+
+    # Logging
+    access_log  off;
+    error_log   /app/logs/nginx.error.log error;
+
+    # First try direct file access, then pass URI to PHP
+    location / {
+        autoindex on;
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    # PHP-FPM settings
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info     ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_index               index.php;
+
+        fastcgi_param   HTTP_X_FILENAME $http_x_filename;
+        fastcgi_param   SCRIPT_FILENAME $document_root/$fastcgi_script_name;
+
+        # Prevent header too big errors
+        fastcgi_buffer_size 128k;
+        fastcgi_buffers 4 256k;
+        fastcgi_busy_buffers_size 256k;
+
+        # Global server config
+        include fastcgi_params; #TODO check
+    }
+
+    location = /robots.txt  {
+        allow all;
+        log_not_found off;
+        expires 7d;
+    }
+
+    location = /favicon.ico {
+        log_not_found off;
+        expires 1M;
+    }
+
+    location ~* ^/(img|fonts|gfx)/(.+)$ {
+        #root $statics_path;
+        expires 1M;
+    }
+
+    location ~* ^/(css|js)/(.+)$ {
+        #root $statics_path;
+        expires modified +7d;
+    }
+
+    # Deny all attempts to access hidden files such as .htaccess, .htpasswd, .DS_Store (Mac).
+    # Keep logging the requests to parse later (or to pass to firewall utilities such as fail2ban)
+    location ~ /\. {
+        deny all;
+    }
+}
