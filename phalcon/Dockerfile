@@ -16,4 +16,6 @@ RUN cd /tmp && \
     cd cphalcon-phalcon-v1.3.4/build && \
     ./install
 
+RUN rm -rf /tmp/cphalcon*
+
 ADD 30-phalcon.ini /etc/php5/conf.d/30-phalcon.ini
