@@ -11,9 +11,9 @@ RUN apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN cd /tmp && \
-    wget https://github.com/phalcon/cphalcon/archive/phalcon-v1.3.4.tar.gz && \
-    tar xvf phalcon-v1.3.4.tar.gz && \
-    cd cphalcon-phalcon-v1.3.4/build && \
+    wget https://github.com/phalcon/cphalcon/archive/phalcon-v1.3.2.tar.gz && \
+    tar xvf phalcon-v1.3.2.tar.gz && \
+    cd cphalcon-phalcon-v1.3.2/build && \
     ./install
 
 RUN rm -rf /tmp/cphalcon*
