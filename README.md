@@ -4,9 +4,12 @@ All images are based on debian with dotdeb repository. Inspired by [maxexcloo/Do
 
 ## Images:
 
-* `jodator/debian-dotdeb` - base image
+* `jodator/app` - Example PHP application
+* `jodator/debian-dotdeb` - base debian image
 * `jodator/nginx` - nginx server
-* `jodator/php-fpm-phalcon` - PHP 5.4 with phalconPHP installed
+* `jodator/phalcon` - PHP 5.4 with phalconPHP installed
+* `jodator/php-fpm` - base PHP 5.4 with FPM & CLI
+* `jodator/php-fpm-cron` - PHP 5.4 with cron installed
 
 Site configuration
 
