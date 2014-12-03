@@ -1,3 +1,3 @@
-# PHP-FPM with PhalconPHP framework included
+# PHP-FPM
 
-Base Docker file for PHP-FPM + PhalconPHP.
+Base Docker file for PHP-FPM.
