@@ -4,7 +4,7 @@ MAINTAINER Maciej Gołaszewski <jodator@gmail.com>
 
 RUN \
     apt-get update && \
-    apt-get install -y php5-dev make
+    apt-get install -y php5-dev libpcre3-dev gcc make
 
 RUN \
     apt-get autoremove && \
