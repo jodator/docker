@@ -1,4 +1,5 @@
 FROM jodator/nginx
+
 MAINTAINER Maciej Gołaszewski <jodator@gmail.com>
 
 RUN \
@@ -18,10 +19,12 @@ RUN \
         php5-mysql \
         php5-tidy
 
-RUN rm -rf /etc/php5/cli/php.ini && \
+RUN \
+    rm -rf /etc/php5/cli/php.ini && \
     ln -s /etc/php5/fpm/php.ini /etc/php5/cli/php.ini
 
-RUN apt-get autoremove && \
+RUN \
+    apt-get autoremove && \
     apt-get autoclean && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

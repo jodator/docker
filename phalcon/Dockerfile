@@ -1,15 +1,19 @@
 FROM jodator/php-fpm
+
 MAINTAINER Maciej Gołaszewski <jodator@gmail.com>
 
-RUN apt-get update && \
+RUN \
+    apt-get update && \
     apt-get install -y php5-dev make
 
-RUN apt-get autoremove && \
+RUN \
+    apt-get autoremove && \
     apt-get autoclean && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN cd /tmp && \
+RUN \
+    cd /tmp && \
     wget https://github.com/phalcon/cphalcon/archive/phalcon-v2.0.13.tar.gz && \
     tar xvf phalcon-v2.0.13.tar.gz && \
     cd cphalcon-phalcon-v2.0.13/build && \
